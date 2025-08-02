@@ -1,5 +1,6 @@
 package com.maia.vinicius.service;
 
+import com.maia.vinicius.dto.TaskDto;
 import com.maia.vinicius.exception.TaskCreationException;
 import com.maia.vinicius.exception.TaskDeleteException;
 import com.maia.vinicius.exception.TaskNotFoundException;
@@ -45,5 +46,14 @@ public class TaskService {
                 .orElseThrow(() -> new TaskNotFoundException("Task com ID " + id + " não encontrada"));
         task.setStatus(status);
         taskRepository.save(task);
+    }
+
+    public Task updateTask(Long id, TaskDto taskDto){
+        Task task = taskRepository.findById(id)
+                .orElseThrow(() -> new TaskNotFoundException("Task com ID " + id + " não encontrada"));
+        task.setStatus(taskDto.getStatus());
+        task.setTitle(taskDto.getTitle());
+        task.setDescription(taskDto.getDescription());
+        return taskRepository.save(task);
     }
 }
