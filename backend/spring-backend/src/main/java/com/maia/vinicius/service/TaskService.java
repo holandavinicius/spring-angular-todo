@@ -2,6 +2,7 @@ package com.maia.vinicius.service;
 
 import com.maia.vinicius.exception.TaskCreationException;
 import com.maia.vinicius.exception.TaskDeleteException;
+import com.maia.vinicius.exception.TaskNotFoundException;
 import com.maia.vinicius.model.Task;
 import com.maia.vinicius.repository.TaskRepository;
 import org.springframework.dao.DataIntegrityViolationException;
@@ -33,9 +34,16 @@ public class TaskService {
         try{
             taskRepository.deleteById(id);
         } catch (EmptyResultDataAccessException ex) {
-            throw new TaskDeleteException("Task com ID " + id + " não encontrada", ex);
+            throw new TaskNotFoundException("Task com ID " + id + " não encontrada", ex);
         } catch (Exception ex) {
             throw new TaskDeleteException("Erro inesperado ao deletar a task", ex);
         }
+    }
+
+    public void updateStatus(Long id, String status){
+        Task task = taskRepository.findById(id)
+                .orElseThrow(() -> new TaskNotFoundException("Task com ID " + id + " não encontrada"));
+        task.setStatus(status);
+        taskRepository.save(task);
     }
 }

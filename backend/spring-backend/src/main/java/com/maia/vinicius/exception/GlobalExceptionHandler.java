@@ -15,6 +15,11 @@ public class GlobalExceptionHandler {
 
     @ExceptionHandler(TaskDeleteException.class)
     public ResponseEntity<String> handleTaskDelete(TaskDeleteException ex) {
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(ex.getMessage());
+    }
+
+    @ExceptionHandler(TaskNotFoundException.class)
+    public ResponseEntity<String> handleTaskNotFound(TaskDeleteException ex) {
         return ResponseEntity.status(HttpStatus.NOT_FOUND).body(ex.getMessage());
     }
 

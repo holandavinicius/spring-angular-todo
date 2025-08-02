@@ -13,7 +13,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/task")
+@RequestMapping("/tasks")
 public class TaskController {
 
     private final TaskService taskService;
@@ -33,5 +33,11 @@ public class TaskController {
     public ResponseEntity<Void> deleteTask(@Min(1) @PathVariable Long id){
         taskService.deleteTask(id);
         return ResponseEntity.noContent().build();
+    }
+
+    @PatchMapping("/{id}")
+    public ResponseEntity<Void> updateStatusTask(@PathVariable Long id, @RequestBody String status){
+        taskService.updateStatus(id, status);
+        return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
     }
 }
