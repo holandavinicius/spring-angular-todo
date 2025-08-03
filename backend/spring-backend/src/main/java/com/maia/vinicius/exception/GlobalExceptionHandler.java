@@ -2,14 +2,15 @@ package com.maia.vinicius.exception;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 
 @RestControllerAdvice
 public class GlobalExceptionHandler {
 
-    @ExceptionHandler(TaskCreationException.class)
-    public ResponseEntity<String> handleTaskCreation(TaskCreationException ex) {
+    @ExceptionHandler(CreationException.class)
+    public ResponseEntity<String> handleTaskCreation(CreationException ex) {
         return ResponseEntity.badRequest().body(ex.getMessage());
     }
 
@@ -23,8 +24,8 @@ public class GlobalExceptionHandler {
         return ResponseEntity.status(HttpStatus.NOT_FOUND).body(ex.getMessage());
     }
 
-    @ExceptionHandler(Exception.class)
-    public ResponseEntity<String> handleOtherExceptions(Exception ex) {
-        return ResponseEntity.internalServerError().body("Erro inesperado");
+    @ExceptionHandler(MethodArgumentNotValidException.class)
+    public ResponseEntity<String> handleOtherExceptions(MethodArgumentNotValidException ex) {
+        return ResponseEntity.badRequest().body(ex.getMessage());
     }
 }

@@ -1,9 +1,7 @@
 package com.maia.vinicius.controller;
 
-import com.maia.vinicius.exception.TaskDeleteException;
 import com.maia.vinicius.service.TaskService;
 import com.maia.vinicius.dto.TaskDto;
-import com.maia.vinicius.exception.TaskCreationException;
 import com.maia.vinicius.mapper.TaskMapper;
 import com.maia.vinicius.model.Task;
 import jakarta.validation.Valid;
