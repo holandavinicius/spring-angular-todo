@@ -1,5 +1,6 @@
 package com.maia.vinicius.model;
 
+import com.maia.vinicius.enums.Status;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
@@ -18,7 +19,7 @@ public class Task {
     @Getter @Setter
     private String description;
     @Getter @Setter
-    private String status;
+    private Status status;
 
     @Column(name = "created_at", updatable = false)
     @Getter
@@ -41,4 +42,5 @@ public class Task {
     protected void onUpdate() {
         this.updatedAt = LocalDateTime.now();
     }
+
 }

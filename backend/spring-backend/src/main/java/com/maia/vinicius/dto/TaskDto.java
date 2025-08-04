@@ -1,5 +1,6 @@
 package com.maia.vinicius.dto;
 
+import com.maia.vinicius.enums.Status;
 import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -13,5 +14,5 @@ public class TaskDto {
     @NotNull
     private String description;
     @NotNull
-    private String status;
+    private Status status;
 }
