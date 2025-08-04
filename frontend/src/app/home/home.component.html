@@ -1,0 +1,82 @@
+<div class="container-fluid py-1">
+  <div class="row">
+    <div class="col">
+      <ul id="mobile-kanban-menu"
+        class="nav nav-underline border-bottom border-1 mb-3 px-2 justify-content-between px-sm-3 d-md-none"
+        role="tablist">
+        <li class="nav-item" role="presentation"><button id="queue-tab" class="nav-link active" data-bs-toggle="tab"
+            data-bs-target="#queue-panel" type="button" role="tab" aria-controls="queue-panel"
+            aria-selected="true">Queued</button></li>
+        <li class="nav-item"><button id="serving-tab" class="nav-link" data-bs-toggle="tab"
+            data-bs-target="#serving-panel" type="button" role="tab" aria-controls="serving-panel"
+            aria-selected="false">Serving</button></li>
+        <li class="nav-item"><button id="completed-tab" class="nav-link" data-bs-toggle="tab"
+            data-bs-target="#completed-panel" type="button" role="tab" aria-controls="completed-panel"
+            aria-selected="false">Completed</button></li>
+        <li class="nav-item"><button id="cancelled-tab" class="nav-link" data-bs-toggle="tab"
+            data-bs-target="#cancelled-panel" type="button" role="tab" aria-controls="cancelled-panel"
+            aria-selected="false">Cancelled</button></li>
+      </ul>
+    </div>
+  </div>
+  <div class="row gx-0 gy-1 gx-md-3 row-cols-1 row-cols-md-4 tab-content d-md-flex" style="height: 90vh;">
+    <div id="queue-panel" class="col align-items-stretch tab-pane show pe-0 fade d-md-flex active kanban-col"
+      role="tabpanel" tabindex="0">
+      <div class="card border-0 pb-3 w-100">
+        <div class="card-body p-0">
+          <div class="justify-content-between m-3 mb-4 d-none d-md-flex">
+            <h6 class="fs-5 fw-normal text-dark mb-2">To Do</h6><svg class="bi bi-three-dots-vertical"
+              xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
+              <path
+                d="M9.5 13a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0m0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0m0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0">
+              </path>
+            </svg>
+          </div>
+          <div class="px-md-2 kanban-column pt-2 me-0 pe-1 me-md-1"
+            style="/*max-height: calc(100vh - 150px);*//*overflow-y: auto;*/" ondrop="drop(event)"
+            ondragover="allowDrop(event)">
+            <app-todo-card *ngFor="let t of toDoTasks" [task]="t"></app-todo-card>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="serving-panel" class="col align-items-stretch tab-pane fade d-md-flex kanban-col pe-0" role="tabpanel"
+      tabindex="0">
+      <div class="card border-0 pb-3 w-100">
+        <div class="card-body p-0">
+          <div class="justify-content-between m-3 mb-4 d-none d-md-flex">
+            <h6 class="fs-5 fw-normal text-dark mb-2">In Progress</h6><svg class="bi bi-three-dots-vertical"
+              xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
+              <path
+                d="M9.5 13a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0m0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0m0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0">
+              </path>
+            </svg>
+          </div>
+          <div class="px-md-2 kanban-column pt-2 me-0 pe-1 me-md-1"
+            style="/*max-height: calc(100vh - 150px);*//*overflow-y: auto;*/" ondrop="drop(event)"
+            ondragover="allowDrop(event)">
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="completed-panel" class="col align-items-stretch tab-pane fade d-md-flex kanban-col pe-0" role="tabpanel"
+      tabindex="0">
+      <div class="card border-0 pb-3 w-100">
+        <div class="card-body p-0">
+          <div class="justify-content-between m-3 mb-4 d-none d-md-flex">
+            <h6 class="fs-5 fw-normal text-dark mb-2">Done</h6><svg class="bi bi-three-dots-vertical"
+              xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
+              <path
+                d="M9.5 13a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0m0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0m0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0">
+              </path>
+            </svg>
+          </div>
+          <div class="px-md-2 kanban-column pt-2 me-0 pe-1 me-md-1"
+            style="/*max-height: calc(100vh - 150px);*//*overflow-y: auto;*/" ondrop="drop(event)"
+            ondragover="allowDrop(event)">
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

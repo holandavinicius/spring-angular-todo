@@ -1,0 +1,20 @@
+<div class="card mb-2 kanban-card" draggable="true" data-id="1" ondragstart="drag(event)" *ngFor="let t of toDoTasks">
+              <div class="card-body">
+                <div class="d-flex justify-content-between">
+                  <h5 class="text-muted mb-2">{{t.taskName}}</h5>
+                  <div class="dropdown"><button class="btn btn-sm dropdown-toggle" aria-expanded="false"
+                      data-bs-toggle="dropdown" type="button" aria-haspopup="true"></button>
+                    <div class="dropdown-menu dropdown-menu-end"><a class="dropdown-item" href="#">Move to Serving</a><a
+                        class="dropdown-item" href="#">Move to Completed</a><a class="dropdown-item" href="#">Move to
+                        Cancelled</a>
+                      <div class="dropdown-divider"></div><a class="dropdown-item" href="#"><strong>Details</strong></a>
+                    </div>
+                  </div>
+                </div>
+                <div class="info mb-2"><span class="badge bg-secondary me-2">1/3</span><span>{{t.description}}</span></div>
+                <div class="bg-secondary-subtle border rounded-pill d-flex align-items-center"
+                  style="padding: 2px;width: fit-content;"><img class="rounded-circle"
+                    src="https://randomuser.me/api/portraits/men/13.jpg" width="22" style="margin: 1px;" /><span
+                    class="text-secondary ms-1 me-3" style="font-size: 0.9em;">Danish Firdaus</span></div>
+              </div>
+            </div>
