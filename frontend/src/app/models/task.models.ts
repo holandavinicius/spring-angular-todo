@@ -1,6 +1,8 @@
 export interface Task {
+  id: number,
   title: string;
   description: string;
-  status: 'To Do' | 'In Progress' | 'Done';
+  status: TaskStatus;
 }
 
+export type TaskStatus = "To Do" | "In Progress" | "Done";
