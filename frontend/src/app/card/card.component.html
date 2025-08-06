@@ -1,0 +1,10 @@
+<div class="bg-white px-5 py-3 rounded-md cursor-pointer transition-transform duration-200 ease-in-out animate-fade-in position-relative"
+    draggable="true" 
+    (dragstart)="onDragStart($event, task)" 
+    (dragend)="onDragEnd($event)" >
+    <button type="button" class="close" aria-label="Close" (click)="clickDeleteButton()">
+        <span aria-hidden="true">&times;</span>
+    </button>
+    <h4>{{ task.title }}</h4>
+    <p>{{ task.description }}</p>
+</div>
