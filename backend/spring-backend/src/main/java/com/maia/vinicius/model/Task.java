@@ -19,7 +19,9 @@ public class Task {
     @Getter @Setter
     private String description;
     @Getter @Setter
+    @Enumerated(EnumType.STRING)
     private Status status;
+
 
     @Column(name = "created_at", updatable = false)
     @Getter

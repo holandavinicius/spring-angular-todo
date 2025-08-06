@@ -1,18 +1,28 @@
 package com.maia.vinicius.dto.request;
 
 
-import com.maia.vinicius.dto.TaskBaseDto;
 import com.maia.vinicius.enums.Status;
-import lombok.Getter;
-import lombok.Setter;
-import lombok.experimental.SuperBuilder;
+import jakarta.validation.constraints.NotNull;
+import lombok.*;
 
-@Getter
-@Setter
-@SuperBuilder
-public class TaskRequestDto extends TaskBaseDto {
+@Data
+public class TaskRequestDto {
+
+    @NotNull
+    private String title;
+
+    @NotNull
+    private String description;
+
+    @NotNull
+    private Status status;
+
+    public TaskRequestDto() {
+    }
 
     public TaskRequestDto(String title, String description, Status status) {
-        super(title, description, status);
+        this.title = title;
+        this.description = description;
+        this.status = status;
     }
 }
